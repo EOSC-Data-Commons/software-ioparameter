@@ -1,0 +1,62 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://w3id.org/software-ioparameter/context.jsonld"
+  ],
+  "@type": "SoftwareSourceCode",
+  "name": "Parameter type examples",
+  "isSourceCodeOf": {
+    "@type": "CommandLineApplication",
+    "name": "parameter-example",
+    "inputParameter": [
+      {
+        "@type": "FormalParameter",
+        "name": "Input file",
+        "identifier": "input_file",
+        "additionalType": "File",
+        "encodingFormat": "text/csv",
+        "valueRequired": true
+      },
+      {
+        "@type": "FormalParameter",
+        "name": "Working directory",
+        "identifier": "working_directory",
+        "additionalType": "Directory",
+        "valueRequired": true
+      },
+      {
+        "@type": "FormalParameter",
+        "name": "Labels",
+        "identifier": "labels",
+        "description": "An array whose members are text labels.",
+        "additionalType": "Array",
+        "valueRequired": false
+      },
+      {
+        "@type": "FormalParameter",
+        "name": "Overwrite",
+        "identifier": "overwrite",
+        "additionalType": "xsd:boolean",
+        "defaultValue": false,
+        "valueRequired": false
+      },
+      {
+        "@type": "FormalParameter",
+        "name": "Maximum records",
+        "identifier": "max_records",
+        "additionalType": "xsd:integer",
+        "valueRequired": false
+      }
+    ],
+    "outputParameter": [
+      {
+        "@type": "FormalParameter",
+        "name": "Report",
+        "identifier": "report",
+        "additionalType": "File",
+        "encodingFormat": "application/json"
+      }
+    ]
+  }
+}

@@ -5,37 +5,28 @@
     "https://eosc-data-commons.github.io/software-ioparameter/context.jsonld"
   ],
   "@type": "SoftwareSourceCode",
-  "name": "CernBox",
-  "description": "Tool to send files to a CERNBox user.",
+  "name": "CERNBox",
+  "description": "Tool to send data to a CERNBox user. Requires login with MyAccessId.",
   "version": "v0",
-  "applicationCategory": "Data access",
+  "applicationCategory": "data access",
   "isSourceCodeOf": [
     {
       "@type": "WebAPI",
-      "name": "CernBox",
+      "name": "CERNBox",
       "endpointUrl": {
         "@type": "EntryPoint",
         "url": "https://cernbox.cern.ch/",
-        "contentType": "application/json"
+        "contentType": "multipart/form-data"
       },
       "inputParameter": [
         {
-          "@type": "Parameter",
-          "name": "Shared With",
-          "valueName": "shared_with",
-          "valueType": "xsd:string",
+          "@type": "FormalParameter",
+          "name": "Shared with",
+          "identifier": "shared_with",
+          "description": "CERNBox user with whom the file will be shared.",
+          "additionalType": "xsd:string",
           "valueRequired": true
-        }
-      ],
-      "inputFile": [
-        {
-          "@type": "File",
-          "name": "Jupyter Notebook",
-          "identifier": "notebook",
-          "fileExtension": ".ipynb",
-          "mediaType": "application/x-ipynb+json",
-          "required": true
-        }
+        },
       ]
     }
   ]

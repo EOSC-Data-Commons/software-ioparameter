@@ -1,0 +1,29 @@
+@prefix ioparam: <https://w3id.org/software-ioparameter#> .
+@prefix bioschemas: <https://bioschemas.org/> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ioparam:FormalParameterShape
+    a sh:NodeShape ;
+    sh:targetClass bioschemas:FormalParameter ;
+    sh:property [
+        sh:path schema:name ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:string
+    ] ;
+    sh:property [
+        sh:path schema:identifier ;
+        sh:minCount 1
+    ] ;
+    sh:property [
+        sh:path schema:additionalType ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+        sh:path schema:valueRequired ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:boolean
+    ] .

@@ -1,0 +1,10 @@
+{
+  "@context": "https://w3id.org/codemeta/3.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Software Input/Output Parameter Vocabulary",
+  "description": "A lightweight vocabulary for connecting software applications and services to Bioschemas FormalParameter descriptions.",
+  "version": "0.2.0",
+  "license": "https://spdx.org/licenses/Apache-2.0",
+  "codeRepository": "https://github.com/EOSC-Data-Commons/software-ioparameter",
+  "developmentStatus": "active"
+}

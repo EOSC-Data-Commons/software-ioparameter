@@ -1,153 +1,77 @@
 {
   "@context": {
-    "@base": "https://eosc-data-commons.github.io/software-ioparameter/",
-    "@vocab": "https://eosc-data-commons.github.io/software-ioparameter/",
-    "@language": "en",
+    "@version": 1.1,
+    "ioparam": "https://eosc-data-commons.github.io/software-ioparameter/",
+    "bioschemas": "https://bioschemas.org/",
     "dcterms": "http://purl.org/dc/terms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "schema": "https://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "label": "rdfs:label",
-    "comment": "rdfs:comment",
-    "domain": {"@id": "rdfs:domain", "@type": "@id"},
-    "range": {"@id": "rdfs:range", "@type": "@id"},
-    "subClassOf": {"@id": "rdfs:subClassOf", "@type": "@id"},
     "title": "dcterms:title",
     "description": "dcterms:description",
-    "created": {"@id": "dcterms:created", "@type": "xsd:date"},
-    "license": {"@id": "dcterms:license", "@type": "@id"},
-    "relation": {"@id": "dcterms:relation", "@type": "@id"},
-    "version": {
-      "@id": "schema:version",
-      "@language": null
-    }
+    "license": { "@id": "dcterms:license", "@type": "@id" },
+    "versionInfo": "owl:versionInfo",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "range": { "@id": "rdfs:range", "@type": "@id" },
+    "subClassOf": { "@id": "rdfs:subClassOf", "@type": "@id" },
+    "Ontology": "owl:Ontology",
+    "Property": "rdf:Property",
+    "ObjectProperty": "owl:ObjectProperty",
+    "Class": "rdfs:Class",
+    "OwlClass": "owl:Class"
   },
   "@graph": [
     {
-      "@id": "",
-      "@type": "schema:DefinedTermSet",
-      "title": "Software I/O Parameter Vocabulary",
-      "description": "A lightweight vocabulary for describing named input parameters and filesystem inputs and outputs of executable software interfaces.",
-      "created": "2026-09-08",
-      "license": "https://spdx.org/licenses/Apache-2.0.html",
-      "version": "0.2.0",
-      "relation": [
-        "https://w3id.org/codemeta/3.0",
-        "https://w3id.org/software-types",
-        "https://w3id.org/software-iodata",
-        "https://schema.org/PropertyValueSpecification"
-      ]
+      "@id": "https://eosc-data-commons.github.io/software-ioparameter/",
+      "@type": "Ontology",
+      "title": { "@value": "Software Input/Output Parameter Vocabulary", "@language": "en" },
+      "description": { "@value": "A lightweight vocabulary for connecting software applications and services to Bioschemas FormalParameter descriptions.", "@language": "en" },
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "versionInfo": "0.2.0"
     },
     {
-      "@id": "Parameter",
-      "@type": "rdfs:Class",
-      "subClassOf": "schema:PropertyValueSpecification",
-      "label": "parameter",
-      "comment": "A named non-filesystem input parameter of an executable software interface."
+      "@id": "ioparam:inputParameter",
+      "@type": ["Property", "ObjectProperty"],
+      "label": { "@value": "input parameter", "@language": "en" },
+      "comment": { "@value": "A formal parameter representing a value consumed by software or a service.", "@language": "en" },
+      "range": "bioschemas:FormalParameter"
     },
     {
-      "@id": "File",
-      "@type": "rdfs:Class",
-      "subClassOf": "schema:MediaObject",
-      "label": "file",
-      "comment": "A file accepted or produced by an executable software interface."
+      "@id": "ioparam:outputParameter",
+      "@type": ["Property", "ObjectProperty"],
+      "label": { "@value": "output parameter", "@language": "en" },
+      "comment": { "@value": "A formal parameter representing a value produced by software or a service.", "@language": "en" },
+      "range": "bioschemas:FormalParameter"
     },
     {
-      "@id": "Folder",
-      "@type": "rdfs:Class",
-      "subClassOf": "schema:Collection",
-      "label": "folder",
-      "comment": "A filesystem folder accepted or produced by an executable software interface."
+      "@id": "ioparam:ParameterValue",
+      "@type": ["Class", "OwlClass"],
+      "label": { "@value": "parameter value", "@language": "en" },
+      "comment": { "@value": "A structural category of value consumed or produced through a formal parameter.", "@language": "en" }
     },
     {
-      "@id": "inputParameter",
-      "@type": "rdf:Property",
-      "range": "Parameter",
-      "label": "input parameter",
-      "comment": "A parameter accepted by an executable software interface."
+      "@id": "ioparam:File",
+      "@type": ["Class", "OwlClass"],
+      "label": { "@value": "file", "@language": "en" },
+      "comment": { "@value": "A parameter value representing one file. Use schema:encodingFormat to state its media type or format.", "@language": "en" },
+      "subClassOf": "ioparam:ParameterValue"
     },
     {
-      "@id": "inputFile",
-      "@type": "rdf:Property",
-      "range": "File",
-      "label": "input file",
-      "comment": "A file accepted as input by an executable software interface."
+      "@id": "ioparam:Directory",
+      "@type": ["Class", "OwlClass"],
+      "label": { "@value": "directory", "@language": "en" },
+      "comment": { "@value": "A parameter value representing a directory or folder, potentially containing files and subdirectories.", "@language": "en" },
+      "subClassOf": "ioparam:ParameterValue"
     },
     {
-      "@id": "inputFolder",
-      "@type": "rdf:Property",
-      "range": "Folder",
-      "label": "input folder",
-      "comment": "A folder accepted as input by an executable software interface."
-    },
-    {
-      "@id": "outputFile",
-      "@type": "rdf:Property",
-      "range": "File",
-      "label": "output file",
-      "comment": "A file produced by an executable software interface."
-    },
-    {
-      "@id": "outputFolder",
-      "@type": "rdf:Property",
-      "range": "Folder",
-      "label": "output folder",
-      "comment": "A folder produced by an executable software interface."
-    },
-    {
-      "@id": "valueType",
-      "@type": "rdf:Property",
-      "domain": "Parameter",
-      "range": "rdfs:Resource",
-      "label": "value type",
-      "comment": "The datatype or semantic class of the value accepted or produced by a parameter."
-    },
-    {
-      "@id": "mediaType",
-      "@type": "rdf:Property",
-      "domain": "File",
-      "range": "rdfs:Literal",
-      "label": "media type",
-      "comment": "The IANA media type of a file."
-    },
-    {
-      "@id": "fileExtension",
-      "@type": "rdf:Property",
-      "domain": "File",
-      "range": "rdfs:Literal",
-      "label": "file extension",
-      "comment": "A filename extension associated with a file, including its leading dot."
-    },
-    {
-      "@id": "path",
-      "@type": "rdf:Property",
-      "range": "rdfs:Literal",
-      "label": "path",
-      "comment": "A filesystem path or path template for a file or folder."
-    },
-    {
-      "@id": "filePattern",
-      "@type": "rdf:Property",
-      "domain": "Folder",
-      "range": "rdfs:Literal",
-      "label": "file pattern",
-      "comment": "A glob pattern selecting files within a folder."
-    },
-    {
-      "@id": "recursive",
-      "@type": "rdf:Property",
-      "domain": "Folder",
-      "range": "xsd:boolean",
-      "label": "recursive",
-      "comment": "Whether files in nested folders are included."
-    },
-    {
-      "@id": "required",
-      "@type": "rdf:Property",
-      "range": "xsd:boolean",
-      "label": "required",
-      "comment": "Whether an input file or folder must be supplied."
+      "@id": "ioparam:Array",
+      "@type": ["Class", "OwlClass"],
+      "label": { "@value": "array", "@language": "en" },
+      "comment": { "@value": "A parameter value representing an ordered collection of zero or more values.", "@language": "en" },
+      "subClassOf": "ioparam:ParameterValue"
     }
   ]
 }

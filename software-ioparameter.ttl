@@ -1,113 +1,50 @@
+@prefix ioparam: <https://w3id.org/software-ioparameter#> .
+@prefix bioschemas: <https://bioschemas.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix ioparam: <https://eosc-data-commons.github.io/software-ioparameter/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ioparam:
-    a schema:DefinedTermSet ;
-    dcterms:title "Software I/O Parameter Vocabulary"@en ;
-    dcterms:description "A lightweight vocabulary for describing named input parameters and filesystem inputs and outputs of executable software interfaces."@en ;
-    dcterms:created "2026-09-08"^^xsd:date ;
-    dcterms:license <https://spdx.org/licenses/Apache-2.0.html> ;
-    dcterms:relation <https://w3id.org/codemeta/3.0>,
-        <https://w3id.org/software-types>,
-        <https://w3id.org/software-iodata>,
-        schema:PropertyValueSpecification ;
-    schema:version "0.2.0" .
-
-ioparam:Parameter
-    a rdfs:Class ;
-    rdfs:subClassOf schema:PropertyValueSpecification ;
-    rdfs:label "parameter"@en ;
-    rdfs:comment "A named non-filesystem input parameter of an executable software interface."@en .
-
-ioparam:File
-    a rdfs:Class ;
-    rdfs:subClassOf schema:MediaObject ;
-    rdfs:label "file"@en ;
-    rdfs:comment "A file accepted or produced by an executable software interface."@en .
-
-ioparam:Folder
-    a rdfs:Class ;
-    rdfs:subClassOf schema:Collection ;
-    rdfs:label "folder"@en ;
-    rdfs:comment "A filesystem folder accepted or produced by an executable software interface."@en .
+<https://w3id.org/software-ioparameter>
+    a owl:Ontology ;
+    dcterms:title "Software Input/Output Parameter Vocabulary"@en ;
+    dcterms:description "A lightweight vocabulary for connecting software applications and services to Bioschemas FormalParameter descriptions."@en ;
+    dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+    owl:versionInfo "0.2.0" .
 
 ioparam:inputParameter
-    a rdf:Property ;
-    rdfs:range ioparam:Parameter ;
+    a rdf:Property, owl:ObjectProperty ;
     rdfs:label "input parameter"@en ;
-    rdfs:comment "A parameter accepted by an executable software interface."@en .
+    rdfs:comment "A formal parameter representing a value consumed by software or a service."@en ;
+    rdfs:range bioschemas:FormalParameter .
 
-ioparam:inputFile
-    a rdf:Property ;
-    rdfs:range ioparam:File ;
-    rdfs:label "input file"@en ;
-    rdfs:comment "A file accepted as input by an executable software interface."@en .
+ioparam:outputParameter
+    a rdf:Property, owl:ObjectProperty ;
+    rdfs:label "output parameter"@en ;
+    rdfs:comment "A formal parameter representing a value produced by software or a service."@en ;
+    rdfs:range bioschemas:FormalParameter .
 
-ioparam:inputFolder
-    a rdf:Property ;
-    rdfs:range ioparam:Folder ;
-    rdfs:label "input folder"@en ;
-    rdfs:comment "A folder accepted as input by an executable software interface."@en .
+ioparam:ParameterValue
+    a rdfs:Class, owl:Class ;
+    rdfs:label "parameter value"@en ;
+    rdfs:comment "A structural category of value consumed or produced through a formal parameter."@en .
 
-ioparam:outputFile
-    a rdf:Property ;
-    rdfs:range ioparam:File ;
-    rdfs:label "output file"@en ;
-    rdfs:comment "A file produced by an executable software interface."@en .
+ioparam:File
+    a rdfs:Class, owl:Class ;
+    rdfs:label "file"@en ;
+    rdfs:comment "A parameter value representing one file. Use schema:encodingFormat to state its media type or format."@en ;
+    rdfs:subClassOf ioparam:ParameterValue .
 
-ioparam:outputFolder
-    a rdf:Property ;
-    rdfs:range ioparam:Folder ;
-    rdfs:label "output folder"@en ;
-    rdfs:comment "A folder produced by an executable software interface."@en .
+ioparam:Directory
+    a rdfs:Class, owl:Class ;
+    rdfs:label "directory"@en ;
+    rdfs:comment "A parameter value representing a directory or folder, potentially containing files and subdirectories."@en ;
+    rdfs:subClassOf ioparam:ParameterValue .
 
-ioparam:valueType
-    a rdf:Property ;
-    rdfs:domain ioparam:Parameter ;
-    rdfs:range rdfs:Resource ;
-    rdfs:label "value type"@en ;
-    rdfs:comment "The datatype or semantic class of the value accepted or produced by a parameter."@en .
-
-ioparam:mediaType
-    a rdf:Property ;
-    rdfs:domain ioparam:File ;
-    rdfs:range rdfs:Literal ;
-    rdfs:label "media type"@en ;
-    rdfs:comment "The IANA media type of a file."@en .
-
-ioparam:fileExtension
-    a rdf:Property ;
-    rdfs:domain ioparam:File ;
-    rdfs:range rdfs:Literal ;
-    rdfs:label "file extension"@en ;
-    rdfs:comment "A filename extension associated with a file, including its leading dot."@en .
-
-ioparam:path
-    a rdf:Property ;
-    rdfs:range rdfs:Literal ;
-    rdfs:label "path"@en ;
-    rdfs:comment "A filesystem path or path template for a file or folder."@en .
-
-ioparam:filePattern
-    a rdf:Property ;
-    rdfs:domain ioparam:Folder ;
-    rdfs:range rdfs:Literal ;
-    rdfs:label "file pattern"@en ;
-    rdfs:comment "A glob pattern selecting files within a folder."@en .
-
-ioparam:recursive
-    a rdf:Property ;
-    rdfs:domain ioparam:Folder ;
-    rdfs:range xsd:boolean ;
-    rdfs:label "recursive"@en ;
-    rdfs:comment "Whether files in nested folders are included."@en .
-
-ioparam:required
-    a rdf:Property ;
-    rdfs:range xsd:boolean ;
-    rdfs:label "required"@en ;
-    rdfs:comment "Whether an input file or folder must be supplied."@en .
+ioparam:Array
+    a rdfs:Class, owl:Class ;
+    rdfs:label "array"@en ;
+    rdfs:comment "A parameter value representing an ordered collection of zero or more values."@en ;
+    rdfs:subClassOf ioparam:ParameterValue .

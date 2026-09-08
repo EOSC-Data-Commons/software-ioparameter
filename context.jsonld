@@ -2,40 +2,28 @@
   "@context": {
     "@version": 1.1,
     "ioparam": "https://eosc-data-commons.github.io/software-ioparameter/",
+    "bioschemas": "https://bioschemas.org/",
     "schema": "https://schema.org/",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
-    "Parameter": "ioparam:Parameter",
+    "FormalParameter": "bioschemas:FormalParameter",
+    "ParameterValue": "ioparam:ParameterValue",
     "File": "ioparam:File",
-    "Folder": "ioparam:Folder",
+    "Directory": "ioparam:Directory",
+    "Array": "ioparam:Array",
     "inputParameter": {
       "@id": "ioparam:inputParameter",
+      "@type": "@id",
       "@container": "@set"
     },
-    "inputFile": {
-      "@id": "ioparam:inputFile",
+    "outputParameter": {
+      "@id": "ioparam:outputParameter",
+      "@type": "@id",
       "@container": "@set"
     },
-    "inputFolder": {
-      "@id": "ioparam:inputFolder",
+    "additionalType": {
+      "@id": "schema:additionalType",
+      "@type": "@id",
       "@container": "@set"
-    },
-    "outputFile": {
-      "@id": "ioparam:outputFile",
-      "@container": "@set"
-    },
-    "outputFolder": {
-      "@id": "ioparam:outputFolder",
-      "@container": "@set"
-    },
-    "valueType": {
-      "@id": "ioparam:valueType",
-      "@type": "@id"
-    },
-    "mediaType": "ioparam:mediaType",
-    "fileExtension": "ioparam:fileExtension",
-    "path": "ioparam:path",
-    "filePattern": "ioparam:filePattern",
-    "recursive": "ioparam:recursive",
-    "required": "ioparam:required"
+    }
   }
 }
