@@ -2,7 +2,7 @@
   "@context": [
     "https://w3id.org/codemeta/3.0",
     "https://w3id.org/software-types",
-    "https://w3id.org/software-ioparameter/context.jsonld"
+    "https://raw.githubusercontent.com/EOSC-Data-Commons/software-ioparameter/main/context.jsonld"
   ],
   "@type": "SoftwareSourceCode",
   "name": "Parameter type examples",
@@ -14,7 +14,7 @@
         "@type": "FormalParameter",
         "name": "Input file",
         "identifier": "input_file",
-        "additionalType": "File",
+        "additionalType": "ioparam:File",
         "encodingFormat": "text/csv",
         "valueRequired": true
       },
@@ -22,7 +22,7 @@
         "@type": "FormalParameter",
         "name": "Working directory",
         "identifier": "working_directory",
-        "additionalType": "Directory",
+        "additionalType": "ioparam:Directory",
         "valueRequired": true
       },
       {
@@ -30,7 +30,7 @@
         "name": "Labels",
         "identifier": "labels",
         "description": "An array whose members are text labels.",
-        "additionalType": "Array",
+        "additionalType": "ioparam:Array",
         "valueRequired": false
       },
       {
@@ -54,7 +54,7 @@
         "@type": "FormalParameter",
         "name": "Report",
         "identifier": "report",
-        "additionalType": "File",
+        "additionalType": "ioparam:File",
         "encodingFormat": "application/json"
       }
     ]

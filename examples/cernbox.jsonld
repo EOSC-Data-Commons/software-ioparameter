@@ -2,7 +2,7 @@
   "@context": [
     "https://w3id.org/codemeta/3.0",
     "https://w3id.org/software-types",
-    "https://eosc-data-commons.github.io/software-ioparameter/context.jsonld"
+    "https://raw.githubusercontent.com/EOSC-Data-Commons/software-ioparameter/main/context.jsonld"
   ],
   "@type": "SoftwareSourceCode",
   "name": "CERNBox",
