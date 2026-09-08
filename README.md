@@ -5,7 +5,7 @@ A small RDF vocabulary for attaching [Bioschemas `FormalParameter`](https://bios
 Canonical namespace:
 
 ```text
-https://w3id.org/software-ioparameter#
+https://eosc-data-commons.github.io/software-ioparameter#
 ```
 
 ## Design
