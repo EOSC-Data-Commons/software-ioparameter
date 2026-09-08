@@ -1,0 +1,153 @@
+{
+  "@context": {
+    "@base": "https://eosc-data-commons.github.io/software-ioparameter/",
+    "@vocab": "https://eosc-data-commons.github.io/software-ioparameter/",
+    "@language": "en",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "domain": {"@id": "rdfs:domain", "@type": "@id"},
+    "range": {"@id": "rdfs:range", "@type": "@id"},
+    "subClassOf": {"@id": "rdfs:subClassOf", "@type": "@id"},
+    "title": "dcterms:title",
+    "description": "dcterms:description",
+    "created": {"@id": "dcterms:created", "@type": "xsd:date"},
+    "license": {"@id": "dcterms:license", "@type": "@id"},
+    "relation": {"@id": "dcterms:relation", "@type": "@id"},
+    "version": {
+      "@id": "schema:version",
+      "@language": null
+    }
+  },
+  "@graph": [
+    {
+      "@id": "",
+      "@type": "schema:DefinedTermSet",
+      "title": "Software I/O Parameter Vocabulary",
+      "description": "A lightweight vocabulary for describing named input parameters and filesystem inputs and outputs of executable software interfaces.",
+      "created": "2026-09-08",
+      "license": "https://spdx.org/licenses/Apache-2.0.html",
+      "version": "0.2.0",
+      "relation": [
+        "https://w3id.org/codemeta/3.0",
+        "https://w3id.org/software-types",
+        "https://w3id.org/software-iodata",
+        "https://schema.org/PropertyValueSpecification"
+      ]
+    },
+    {
+      "@id": "Parameter",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:PropertyValueSpecification",
+      "label": "parameter",
+      "comment": "A named non-filesystem input parameter of an executable software interface."
+    },
+    {
+      "@id": "File",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:MediaObject",
+      "label": "file",
+      "comment": "A file accepted or produced by an executable software interface."
+    },
+    {
+      "@id": "Folder",
+      "@type": "rdfs:Class",
+      "subClassOf": "schema:Collection",
+      "label": "folder",
+      "comment": "A filesystem folder accepted or produced by an executable software interface."
+    },
+    {
+      "@id": "inputParameter",
+      "@type": "rdf:Property",
+      "range": "Parameter",
+      "label": "input parameter",
+      "comment": "A parameter accepted by an executable software interface."
+    },
+    {
+      "@id": "inputFile",
+      "@type": "rdf:Property",
+      "range": "File",
+      "label": "input file",
+      "comment": "A file accepted as input by an executable software interface."
+    },
+    {
+      "@id": "inputFolder",
+      "@type": "rdf:Property",
+      "range": "Folder",
+      "label": "input folder",
+      "comment": "A folder accepted as input by an executable software interface."
+    },
+    {
+      "@id": "outputFile",
+      "@type": "rdf:Property",
+      "range": "File",
+      "label": "output file",
+      "comment": "A file produced by an executable software interface."
+    },
+    {
+      "@id": "outputFolder",
+      "@type": "rdf:Property",
+      "range": "Folder",
+      "label": "output folder",
+      "comment": "A folder produced by an executable software interface."
+    },
+    {
+      "@id": "valueType",
+      "@type": "rdf:Property",
+      "domain": "Parameter",
+      "range": "rdfs:Resource",
+      "label": "value type",
+      "comment": "The datatype or semantic class of the value accepted or produced by a parameter."
+    },
+    {
+      "@id": "mediaType",
+      "@type": "rdf:Property",
+      "domain": "File",
+      "range": "rdfs:Literal",
+      "label": "media type",
+      "comment": "The IANA media type of a file."
+    },
+    {
+      "@id": "fileExtension",
+      "@type": "rdf:Property",
+      "domain": "File",
+      "range": "rdfs:Literal",
+      "label": "file extension",
+      "comment": "A filename extension associated with a file, including its leading dot."
+    },
+    {
+      "@id": "path",
+      "@type": "rdf:Property",
+      "range": "rdfs:Literal",
+      "label": "path",
+      "comment": "A filesystem path or path template for a file or folder."
+    },
+    {
+      "@id": "filePattern",
+      "@type": "rdf:Property",
+      "domain": "Folder",
+      "range": "rdfs:Literal",
+      "label": "file pattern",
+      "comment": "A glob pattern selecting files within a folder."
+    },
+    {
+      "@id": "recursive",
+      "@type": "rdf:Property",
+      "domain": "Folder",
+      "range": "xsd:boolean",
+      "label": "recursive",
+      "comment": "Whether files in nested folders are included."
+    },
+    {
+      "@id": "required",
+      "@type": "rdf:Property",
+      "range": "xsd:boolean",
+      "label": "required",
+      "comment": "Whether an input file or folder must be supplied."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "@context": [
+    "https://w3id.org/codemeta/3.0",
+    "https://w3id.org/software-types",
+    "https://eosc-data-commons.github.io/software-ioparameter/context.jsonld"
+  ],
+  "@type": "SoftwareSourceCode",
+  "name": "Example transcription tool",
+  "applicationCategory": "Speech recognition",
+  "isSourceCodeOf": [
+    {
+      "@type": "CommandLineApplication",
+      "name": "Example transcription tool",
+      "executableName": "transcribe",
+      "runtimePlatform": "Linux",
+      "inputFile": [
+        {
+          "@type": "File",
+          "name": "Audio file",
+          "identifier": "input_file",
+          "fileExtension": ".mp3",
+          "mediaType": "audio/mpeg",
+          "required": true
+        }
+      ],
+      "inputParameter": [
+        {
+          "@type": "Parameter",
+          "name": "Language",
+          "valueName": "language",
+          "valueType": "xsd:string",
+          "defaultValue": "eng",
+          "valueRequired": false
+        }
+      ],
+      "outputFile": [
+        {
+          "@type": "File",
+          "name": "Transcript",
+          "identifier": "transcript",
+          "fileExtension": ".txt",
+          "mediaType": "text/plain"
+        }
+      ]
+    }
+  ]
+}
